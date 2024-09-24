@@ -191,7 +191,7 @@ PUT /breakfasts/{{id}}
     ]
 }
 ```
-
+-
 ### Update Breakfast Response
 
 ```js

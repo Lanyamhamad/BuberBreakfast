@@ -52,7 +52,7 @@ public class BreakfastService : IBreakfastService
 
     public ErrorOr<UpsertedBreakfast> UpsertBreakfast(Breakfast breakfast)
     {
-        var isNewlyCreated = dbContext.Breakfasts.Find(breakfast.Id) is not Breakfast ;
+        var isNewlyCreated = dbContext.Breakfasts.Find(breakfast.Id) is not Breakfast dbbreakfast;
         
         if(isNewlyCreated)
         {
