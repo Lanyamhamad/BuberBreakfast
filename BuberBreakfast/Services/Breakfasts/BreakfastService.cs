@@ -2,6 +2,7 @@ using BuberBreakfast.Models;
 using BuberBreakfast.Persistance;
 using BuberBreakfast.ServiceErrors;
 using ErrorOr;
+using Microsoft.EntityFrameworkCore;
 
 namespace BuberBreakfast.Services.Breakfasts;
 
@@ -52,7 +53,7 @@ public class BreakfastService : IBreakfastService
 
     public ErrorOr<UpsertedBreakfast> UpsertBreakfast(Breakfast breakfast)
     {
-        var isNewlyCreated = dbContext.Breakfasts.Find(breakfast.Id) is not Breakfast dbbreakfast;
+        var isNewlyCreated = !dbContext.Breakfasts.Any(b => b.Id == breakfast.Id);
         
         if(isNewlyCreated)
         {
